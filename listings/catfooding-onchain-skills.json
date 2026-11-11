@@ -1,0 +1,27 @@
+{
+  "slug": "catfooding-onchain-skills",
+  "name": "Catfooding onchain skills",
+  "kind": "skill",
+  "tagline": "Give your coding agent the skills to adopt an Agent Cat on Avalanche Fuji and hunt for fake stock tokens.",
+  "builder": {
+    "name": "Catfooding",
+    "x": "Catfoodingcom",
+    "github": "catfoodingcom"
+  },
+  "links": {
+    "try": "https://github.com/catfoodingcom/catfooding-onchain-skills/blob/main/START-HERE.md",
+    "code": "https://github.com/catfoodingcom/catfooding-onchain-skills"
+  },
+  "media": null,
+  "needs": [
+    "A coding agent that can run commands (Claude Code, Codex or similar); a chat-only assistant can explain the steps but can't do them",
+    "Node.js 20 or newer",
+    "A free Avalanche Builder Hub account, for test AVAX from the faucet: https://build.avax.network/academy/avalanche-l1/avalanche-fundamentals/04-creating-an-l1/01a-create-builder-account",
+    "Optional: a browser wallet (MetaMask, Core, OKX Wallet…) to pat and feed your cat on the site"
+  ],
+  "network": "testnet",
+  "chain": "Avalanche Fuji",
+  "bowl": 1,
+  "featured": true,
+  "added": "2026-11-09"
+}

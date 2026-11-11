@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# Next.js and builds
+.next/
+out/
+build/
+dist/
+
+# env and secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+id_rsa*
+secrets/
+
+# deploy and local
+.vercel/
+.DS_Store
+*.log
+npm-debug.log*

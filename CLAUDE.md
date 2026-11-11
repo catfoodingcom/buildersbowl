@@ -4,7 +4,7 @@ Read this first. It's everything you need to start; ask in a pull request or iss
 
 ## What Builder's Bowl is
 
-Builder's Bowls are the hands-on build sessions at Catfooding meetups in Bangkok. People bring a coding agent and build things: apps, games, agents, skills. **Builder's Bowl is the marketplace where those builds are listed,** so people can find them, try them and see who made them.
+**Builder's Bowl is the marketplace for what people in the Catfooding community build with their coding agents:** apps, games, agents, skills. Most listings are things people have demoed at Catfooding meetups in Bangkok. Where or when they built them doesn't matter, only that they and their agents made them. It's where those builds are listed, so people can find them, try them and see who made them.
 
 It lives on **catfooding.com**, replacing today's Builder's Bowls page (a page, or an overlay on the site). This repo is where it's built. The Catfooding team brings it into the site by pull request.
 
@@ -12,7 +12,7 @@ It lives on **catfooding.com**, replacing today's Builder's Bowls page (a page, 
 - featured and newest builds
 - an **Apps** area, plus filters for games, agents and skills
 - a detail view per listing
-- every listing labelled with its network (testnet or mainnet) and which Bowl it came from
+- every listing labelled with its network (testnet or mainnet) and, if it was shown at a meetup, where
 
 **The first listing** is Builder's Bowl #1's own exercise, the Catfooding onchain skills kit (a skill). It's in `listings/catfooding-onchain-skills.json`.
 
@@ -49,7 +49,7 @@ One file per listing: `listings/<slug>.json`. The slug is lowercase with hyphens
   ],
   "network": "testnet",
   "chain": "Avalanche Fuji",
-  "bowl": 1,
+  "shownAt": "Builder's Bowl #1, 9 Nov 2026",
   "featured": true,
   "added": "2026-11-09"
 }
@@ -60,7 +60,7 @@ One file per listing: `listings/<slug>.json`. The slug is lowercase with hyphens
 - `media`: optional, `listings/media/<slug>.png`, 1200×630, under 500 KB.
 - `needs`: optional. What someone needs before they try it, one short line each. Show it on the detail view as "Before you start".
 - `network`: `testnet`, `mainnet` or `none`. `chain` is optional free text.
-- `bowl`: the Builder's Bowl it came from (a number), or `null`.
+- `shownAt`: optional. Where it was demoed, e.g. "Catfooding meetup, 2 Dec 2026". Leave it out if it wasn't.
 - `featured`: set by the team, not by the builder.
 
 **The index:** `npm run index` checks every listing and writes `listings/index.json` (all listings, newest first). The check fails on a bad file, and runs on every pull request. **catfooding.com reads `listings/index.json`,** so keep its shape stable; if you change it, say so in the pull request.
@@ -92,7 +92,7 @@ Match catfooding.com: dark, quiet, one violet accent. These are the site's own C
 | `--accent` / `--accent-lift` | `#6b5bff` / `#8d81ff` | links, buttons, the one accent |
 | `--rule` | `rgba(237,234,226,0.16)` | borders and dividers |
 | `--font-display` | Bricolage Grotesque | text and headings |
-| `--font-mono` | IBM Plex Mono | labels, tags, meta lines ("Testnet · Bowl #1") |
+| `--font-mono` | IBM Plex Mono | labels, tags, meta lines ("Testnet · Builder's Bowl #1") |
 
 - The preview page defines these in `app/preview.css`, copied from the site. Inside the site they already exist.
 - **Status colours** (testnet label etc.): green `#3ddc97`, amber `#ffb84f`, red `#ff5d5d`. Use them for status only, never decoration.

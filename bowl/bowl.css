@@ -1,0 +1,329 @@
+/* Builder's Bowl. Every class starts with bowl-. Colours and fonts come only from the site's variables
+   (--ink, --ink-lift, --bone, --bone-dim, --bone-faint, --accent, --accent-lift, --rule, --font-display,
+   --font-mono). Status colours are for the network label only. */
+
+.bowl {
+  --bowl-ok: #3ddc97;
+  --bowl-warn: #ffb84f;
+  --bowl-gap: clamp(14px, 2vw, 24px);
+  color: var(--bone);
+  font-family: var(--font-display);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.bowl a {
+  color: var(--accent-lift);
+  text-underline-offset: 3px;
+}
+
+.bowl-eyebrow,
+.bowl-meta,
+.bowl-section__title,
+.bowl-needs__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  margin: 0;
+}
+
+.bowl-title {
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 10px 0 14px;
+}
+
+.bowl-lede {
+  color: var(--bone-dim);
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.5;
+  max-width: 62ch;
+  margin: 0 0 20px;
+}
+
+.bowl-add,
+.bowl-button {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bone) !important;
+  border: 1px solid var(--accent);
+  transition: background 0.15s;
+}
+
+.bowl-add:hover,
+.bowl-button:hover {
+  background: var(--accent-lift);
+  border-color: var(--accent-lift);
+}
+
+.bowl-button--quiet {
+  background: transparent;
+  border-color: var(--rule);
+}
+
+.bowl-button--quiet:hover {
+  background: var(--ink-lift);
+  border-color: var(--bone-faint);
+}
+
+.bowl-section {
+  margin-top: clamp(32px, 5vw, 56px);
+}
+
+.bowl-section__title {
+  margin-bottom: 14px;
+}
+
+/* the filter */
+.bowl-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.bowl-filter__tab {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--bone-dim);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.bowl-filter__tab:hover {
+  color: var(--bone);
+  border-color: var(--bone-faint);
+}
+
+.bowl-filter__tab.is-on {
+  color: var(--bone);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.bowl-filter__n {
+  color: var(--bone-faint);
+  margin-left: 4px;
+}
+
+.bowl-filter__tab.is-on .bowl-filter__n {
+  color: var(--accent-lift);
+}
+
+/* the list */
+.bowl-grid {
+  display: grid;
+  gap: var(--bowl-gap);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+.bowl-grid--featured {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+}
+
+.bowl-listing {
+  background: var(--ink-lift);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.bowl-listing:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.bowl .bowl-listing__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.bowl-listing__body {
+  padding: 16px 18px 18px;
+}
+
+.bowl-listing__name {
+  font-size: 21px;
+  line-height: 1.2;
+  margin: 6px 0 6px;
+}
+
+.bowl-listing__tagline {
+  color: var(--bone-dim);
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0 0 14px;
+}
+
+.bowl-listing__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--bone-faint);
+}
+
+/* media: 1200×630, or a plain tile */
+.bowl-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  height: auto;
+  object-fit: cover;
+  background: var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+
+.bowl-media--blank {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 18px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%),
+    var(--ink);
+}
+
+.bowl-media__kind {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-lift);
+}
+
+.bowl-media__name {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+/* the network label */
+.bowl-network {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  color: var(--bone-dim);
+}
+
+.bowl-network--testnet {
+  color: var(--bowl-ok);
+  border-color: color-mix(in srgb, var(--bowl-ok) 45%, transparent);
+}
+
+.bowl-network--mainnet {
+  color: var(--bowl-warn);
+  border-color: color-mix(in srgb, var(--bowl-warn) 45%, transparent);
+}
+
+/* one build's view */
+.bowl-detail {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.bowl-detail .bowl-media {
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  margin: 14px 0 18px;
+}
+
+.bowl-back {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--bone-dim);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.bowl-back:hover {
+  color: var(--bone);
+}
+
+.bowl-detail__name {
+  font-size: clamp(28px, 4.4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 8px 0 10px;
+}
+
+.bowl-detail__tagline {
+  font-size: clamp(16px, 1.8vw, 19px);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.bowl-detail__by {
+  color: var(--bone-dim);
+  margin: 0 0 14px;
+}
+
+.bowl-note {
+  font-size: 14px;
+  color: var(--bone-dim);
+  border-left: 2px solid var(--bowl-ok);
+  padding: 2px 0 2px 12px;
+  margin: 12px 0;
+}
+
+.bowl-note--warn {
+  border-left-color: var(--bowl-warn);
+}
+
+.bowl-needs {
+  background: var(--ink-lift);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 18px 20px;
+  margin: 22px 0;
+}
+
+.bowl-needs ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.bowl-needs li + li {
+  margin-top: 8px;
+}
+
+.bowl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 14px;
+}
+
+.bowl-report,
+.bowl-empty {
+  font-size: 14px;
+  color: var(--bone-faint);
+}

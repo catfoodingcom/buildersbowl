@@ -29,7 +29,8 @@
   margin: 0;
 }
 
-.bowl-title {
+/* .bowl first, so a host page's own h1 rule can't remove the spacing */
+.bowl .bowl-title {
   font-size: clamp(30px, 5vw, 52px);
   line-height: 1.05;
   letter-spacing: -0.02em;

@@ -1,0 +1,43 @@
+{
+  "number": 1,
+  "title": "Spot the fake",
+  "tagline": "Give your coding agent the Catfooding skills, adopt an Agent Cat on Avalanche Fuji, then hunt for fake stock tokens.",
+  "date": "2026-11-09",
+  "where": "Bangkok, at the first joint meetup of Catfooding and AVAX Team1 Thailand",
+  "turnout": "17 builders came, and 8 adopted an Agent Cat.",
+  "status": "open",
+  "network": "testnet",
+  "chain": "Avalanche Fuji",
+  "kit": "https://github.com/catfoodingcom/catfooding-onchain-skills",
+  "prompt": "Clone https://github.com/catfoodingcom/catfooding-onchain-skills into a new folder for it (suggest where first). Then read START-HERE.md and fuji/SKILL.md and walk me through the steps, including the challenge in step 9. Keep going on your own; stop only when you need my answer, test AVAX from the faucet, a permission, or my yes to send a transaction.",
+  "needs": [
+    "A coding agent that can run commands (Claude Code, Codex or similar); a chat-only assistant can explain the steps but can't do them",
+    "Node.js 20 or newer",
+    "A free Avalanche Builder Hub account, for test AVAX from the faucet: https://build.avax.network/academy/avalanche-l1/avalanche-fundamentals/04-creating-an-l1/01a-create-builder-account",
+    "Optional: a browser wallet (MetaMask, Core, OKX Wallet…) to pat and feed your cat on the site"
+  ],
+  "steps": [
+    "Get the kit and load the skill in your agent.",
+    "Set up a test wallet on Avalanche Fuji.",
+    "Get test AVAX from the Builder Hub faucet.",
+    "Adopt an Agent Cat: pick a coat, then say yes to each transaction.",
+    "Read the market with your cat: one stock across four chains.",
+    "Check on your cat: it gets its own page.",
+    "Take your cat home to your browser wallet to pat and feed it (optional).",
+    "Spot the fake: the challenge below.",
+    "Bonus: give your cat its own wallet. It moves with the cat, so it's for the cat's own small things."
+  ],
+  "challenge": {
+    "title": "Spot the fake",
+    "text": [
+      "Ask your agent to \"hunt for fake TSLA tokens on Avalanche\". It checks every token with the stock's name: is it from the issuer it names, is the price fair, can you get out? Then try another chain.",
+      "You've done it when you can say how many tokens carry the name, how many are from the issuer, whether you could sell any, and why one of them can't be confirmed either way."
+    ]
+  },
+  "safety": [
+    "Every transaction is on the Fuji testnet, and the kit refuses any other network.",
+    "The hunt only reads. It loads no key and can't send anything. Never buy or approve a token it finds.",
+    "Your keys stay with you. We never hold keys or funds.",
+    "Nothing is sent until you say yes, and approvals are exact, never unlimited."
+  ]
+}

@@ -1,22 +1,7 @@
 import { formatDate, kindLabel, reportUrl } from '../lib/listings.js';
 import Media from './Media.jsx';
 import NetworkBadge from './NetworkBadge.jsx';
-
-const URL_RE = /(https:\/\/[^\s)]+)/g;
-
-/** A "needs" line, with any https link in it made clickable. */
-function Line({ text }) {
-  // split() with a capture group puts each link at an odd index.
-  return text.split(URL_RE).map((part, i) =>
-    i % 2 === 1 ? (
-      <a key={i} href={part} target="_blank" rel="noopener noreferrer">
-        {part.replace(/^https:\/\//, '').replace(/\/.*$/, '')}
-      </a>
-    ) : (
-      part
-    ),
-  );
-}
+import Linkified from './Linkified.jsx';
 
 function Builder({ builder }) {
   const links = [
@@ -39,7 +24,7 @@ function Builder({ builder }) {
 }
 
 /** One build's own view. */
-export default function ListingDetail({ listing, onBack, mediaBase }) {
+export default function ListingDetail({ listing, onBack, onBowl, hasBowl, mediaBase }) {
   const l = listing;
   return (
     <article className="bowl-detail">
@@ -49,7 +34,19 @@ export default function ListingDetail({ listing, onBack, mediaBase }) {
       <Media listing={l} mediaBase={mediaBase} />
       <p className="bowl-meta">
         {kindLabel(l.kind)}
-        {l.bowl ? ` · Built at Bowl #${l.bowl}` : ''} · Added {formatDate(l.added)}
+        {l.bowl ? (
+          <>
+            {' · '}
+            {hasBowl ? (
+              <a href={`?page=builders&bowl=${l.bowl}`} onClick={(e) => (e.preventDefault(), onBowl(l.bowl))}>
+                Built at Bowl #{l.bowl}
+              </a>
+            ) : (
+              `Built at Bowl #${l.bowl}`
+            )}
+          </>
+        ) : null}{' '}
+        · Added {formatDate(l.added)}
       </p>
       <h2 className="bowl-detail__name">{l.name}</h2>
       <p className="bowl-detail__tagline">{l.tagline}</p>
@@ -68,7 +65,7 @@ export default function ListingDetail({ listing, onBack, mediaBase }) {
           <ul>
             {l.needs.map((n) => (
               <li key={n}>
-                <Line text={n} />
+                <Linkified text={n} />
               </li>
             ))}
           </ul>

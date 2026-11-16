@@ -1,36 +1,52 @@
-// Checks every listing in listings/ and writes listings/index.json (all listings, newest first).
-// `node scripts/index.js --check` only checks: it fails if a listing is bad or index.json is out of date.
+// Checks every listing in listings/ and every Bowl in bowls/, and writes listings/index.json (newest first)
+// and bowls/index.json (newest Bowl first).
+// `node scripts/index.js --check` only checks: it fails if a file is bad or an index is out of date.
 import { cp, readdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { checkListing, byNewest } from '../bowl/lib/listings.js';
+import { checkBowl, byNumberDesc } from '../bowl/lib/bowls.js';
 
-const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'listings');
-const out = path.join(dir, 'index.json');
-const mediaOk = (l) => !l.media || existsSync(path.join(dir, '..', l.media));
+const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const checkOnly = process.argv.includes('--check');
-
-const files = (await readdir(dir)).filter((f) => f.endsWith('.json') && f !== 'index.json').sort();
-const listings = [];
 let bad = 0;
-for (const file of files) {
-  let l;
-  try {
-    l = JSON.parse(await readFile(path.join(dir, file), 'utf8'));
-  } catch (e) {
-    console.error(`✗ ${file}: not valid JSON (${e.message})`);
-    bad++;
-    continue;
+
+/** Reads every *.json in a folder (but index.json) and checks each with `check`. Returns the good ones. */
+async function readAll(folder, check) {
+  const dir = path.join(root, folder);
+  if (!existsSync(dir)) return [];
+  const files = (await readdir(dir)).filter((f) => f.endsWith('.json') && f !== 'index.json').sort();
+  const good = [];
+  for (const file of files) {
+    let item;
+    try {
+      item = JSON.parse(await readFile(path.join(dir, file), 'utf8'));
+    } catch (e) {
+      console.error(`✗ ${folder}/${file}: not valid JSON (${e.message})`);
+      bad++;
+      continue;
+    }
+    const problems = check(item, file);
+    if (problems.length) {
+      bad++;
+      console.error(`✗ ${folder}/${file}`);
+      for (const p of problems) console.error(`    ${p}`);
+    } else good.push(item);
   }
-  const problems = checkListing(l, file);
-  if (!mediaOk(l)) problems.push(`media file not found: ${l.media}`);
-  if (problems.length) {
-    bad++;
-    console.error(`✗ ${file}`);
-    for (const p of problems) console.error(`    ${p}`);
-  } else listings.push(l);
+  return good;
 }
+
+const bowls = await readAll('bowls', checkBowl);
+const bowlNumbers = new Set(bowls.map((b) => b.number));
+
+const listings = await readAll('listings', (l, file) => {
+  const p = checkListing(l, file);
+  if (l?.media && !existsSync(path.join(root, l.media))) p.push(`media file not found: ${l.media}`);
+  if (Number.isInteger(l?.bowl) && !bowlNumbers.has(l.bowl)) p.push(`bowl ${l.bowl} has no file in bowls/`);
+  return p;
+});
+
 const slugs = listings.map((l) => l.slug);
 const dupes = slugs.filter((s, i) => slugs.indexOf(s) !== i);
 if (dupes.length) {
@@ -38,22 +54,27 @@ if (dupes.length) {
   bad++;
 }
 if (bad) {
-  console.error(`\n${bad} listing file(s) need fixing.`);
+  console.error(`\n${bad} file(s) need fixing.`);
   process.exit(1);
 }
 
-const json = `${JSON.stringify(listings.sort(byNewest), null, 2)}\n`;
-if (checkOnly) {
-  const current = await readFile(out, 'utf8').catch(() => '');
-  if (current !== json) {
-    console.error('✗ listings/index.json is out of date. Run `npm run index` and commit it.');
-    process.exit(1);
-  }
-  console.log(`✓ ${listings.length} listing(s) fine; index.json is up to date.`);
-} else {
-  await writeFile(out, json);
-  // The preview page serves listing images from public/ (not committed); the site gets them its own way.
-  const media = path.join(dir, 'media');
-  if (existsSync(media)) await cp(media, path.join(dir, '..', 'public', 'listings', 'media'), { recursive: true });
-  console.log(`✓ ${listings.length} listing(s) fine; wrote listings/index.json.`);
+const outputs = [
+  [path.join(root, 'listings', 'index.json'), listings.sort(byNewest)],
+  [path.join(root, 'bowls', 'index.json'), bowls.sort(byNumberDesc)],
+];
+for (const [file, items] of outputs) {
+  const json = `${JSON.stringify(items, null, 2)}\n`;
+  const name = path.relative(root, file);
+  if (checkOnly) {
+    if ((await readFile(file, 'utf8').catch(() => '')) !== json) {
+      console.error(`✗ ${name} is out of date. Run \`npm run index\` and commit it.`);
+      process.exit(1);
+    }
+  } else await writeFile(file, json);
 }
+if (!checkOnly) {
+  // The preview page serves listing images from public/ (not committed); the site gets them its own way.
+  const media = path.join(root, 'listings', 'media');
+  if (existsSync(media)) await cp(media, path.join(root, 'public', 'listings', 'media'), { recursive: true });
+}
+console.log(`✓ ${listings.length} listing(s) and ${bowls.length} Bowl(s) fine; ${checkOnly ? 'the indexes are up to date' : 'wrote the indexes'}.`);

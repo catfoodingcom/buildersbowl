@@ -337,13 +337,13 @@
 
 .bowl-exercise {
   background: var(--ink-lift);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--rule);
   border-radius: 18px;
   transition: border-color 0.15s, transform 0.15s;
 }
 
 .bowl-exercise:hover {
-  border-color: var(--accent-lift);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 

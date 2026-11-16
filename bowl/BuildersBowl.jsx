@@ -89,8 +89,8 @@ export default function BuildersBowl({ listings, bowls = [], mediaBase = '' }) {
         <h1 className="bowl-title">Build with your agent. Show what you made.</h1>
         <p className="bowl-lede">
           Builder&apos;s Bowls are hands-on build sessions at Catfooding meetups in Bangkok: you, your coding agent and an
-          afternoon. Each Bowl sets an exercise you can still do on your own. Below them are the skills, apps, games and
-          agents that came out of them.
+          afternoon. These are the skills, apps, games and agents that came out of them. Each Bowl&apos;s exercise is
+          further down, and you can still do it on your own.
         </p>
         <a className="bowl-add" href={ADD_URL} target="_blank" rel="noopener noreferrer">
           Add your build
@@ -98,17 +98,6 @@ export default function BuildersBowl({ listings, bowls = [], mediaBase = '' }) {
       </header>
 
       {missing && <p className="bowl-note">That {view.slug ? 'build' : 'Bowl'} isn&apos;t listed (any more). Here&apos;s everything else.</p>}
-
-      {allBowls.length > 0 && (
-        <section className="bowl-section">
-          <h2 className="bowl-section__title">The Bowls</h2>
-          <div className="bowl-exercises">
-            {allBowls.map((b) => (
-              <BowlCard key={b.number} bowl={b} builds={buildsOf(b.number).length} onOpen={openBowl} />
-            ))}
-          </div>
-        </section>
-      )}
 
       {featured.length > 0 && (
         <section className="bowl-section">
@@ -140,6 +129,17 @@ export default function BuildersBowl({ listings, bowls = [], mediaBase = '' }) {
           </p>
         )}
       </section>
+
+      {allBowls.length > 0 && (
+        <section className="bowl-section">
+          <h2 className="bowl-section__title">The Bowls</h2>
+          <div className="bowl-exercises">
+            {allBowls.map((b) => (
+              <BowlCard key={b.number} bowl={b} builds={buildsOf(b.number).length} onOpen={openBowl} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 The marketplace for what people build at Catfooding's Builder's Bowls in Bangkok: apps, games, agents and skills, made by builders and their coding agents. It lives on [catfooding.com](https://catfooding.com/?page=builders); this repo is where it's built.
 
-**Status:** early. Version 1 is a listing.
+**Status:** early. The Bowls (the exercise set at each meetup, still doable on your own) and the builds that came out of them.
 
 ## Add your build
 

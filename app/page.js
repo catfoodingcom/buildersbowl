@@ -1,4 +1,5 @@
 import listings from '../listings/index.json';
+import bowls from '../bowls/index.json';
 import BuildersBowl from '../bowl/BuildersBowl.jsx';
 
 // The preview page: renders <BuildersBowl> on the site's background, the way catfooding.com will.
@@ -7,7 +8,7 @@ export default function Preview() {
   return (
     <main className="preview">
       <p className="preview__flag">Preview · on catfooding.com this replaces the Builder&apos;s Bowls page</p>
-      <BuildersBowl listings={listings} mediaBase="/" />
+      <BuildersBowl listings={listings} bowls={bowls} mediaBase="/" />
     </main>
   );
 }

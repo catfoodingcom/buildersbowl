@@ -65,6 +65,20 @@ One file per listing: `listings/<slug>.json`. The slug is lowercase with hyphens
 
 **The index:** `npm run index` checks every listing and writes `listings/index.json` (all listings, newest first). The check fails on a bad file, and runs on every pull request. **catfooding.com reads `listings/index.json`,** so keep its shape stable; if you change it, say so in the pull request.
 
+## A Bowl
+
+Each Builder's Bowl sets an exercise. One file per Bowl: `bowls/<number>.json` (see `bowls/1.json`). The page shows the Bowls above the builds, and each Bowl gets its own page (`?page=builders&bowl=<number>`): the exercise, so anyone can still do it, and the builds that came out of it.
+
+- `number`, `title`, `tagline`, `date` (YYYY-MM-DD), `where`: required.
+- `status`: `upcoming`, `open` (it can still be done on your own) or `closed`.
+- `network`, `chain`: as for a listing.
+- `turnout`: optional, one line ("17 builders came…").
+- `kit`: optional https link; `prompt`: optional, the text to paste into an agent.
+- `needs`, `steps`, `safety`: lists of short lines (`steps` required).
+- `challenge`: optional, `{ "title": …, "text": [ … ] }`.
+
+A listing's `bowl` must be a Bowl that has a file. `npm run index` writes `bowls/index.json` too, and catfooding.com reads it.
+
 ## How it fits into catfooding.com
 
 catfooding.com is a Next.js 16 site in **plain JavaScript (JSX) and plain CSS**. Its pages sit in one app and switch with `?page=…`; Builder's Bowls is `?page=builders`. Build so your work drops straight in:

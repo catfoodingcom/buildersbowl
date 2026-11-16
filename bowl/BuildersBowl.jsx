@@ -10,8 +10,11 @@ import './bowl.css';
 /** Reads `l` (the open listing) from the address bar, so a build's view has its own link. */
 const slugFromUrl = () => (typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('l'));
 
+// On catfooding.com the page is chosen by ?page=builders, and the site's menu doesn't put it in the address bar.
+// Setting it here keeps a build's link (?page=builders&l=<slug>) working when it's shared or reloaded.
 function setSlugInUrl(slug) {
   const url = new URL(window.location.href);
+  url.searchParams.set('page', 'builders');
   if (slug) url.searchParams.set('l', slug);
   else url.searchParams.delete('l');
   window.history.pushState({ bowl: slug }, '', url);

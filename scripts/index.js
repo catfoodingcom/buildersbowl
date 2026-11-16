@@ -1,12 +1,14 @@
 // Checks every listing in listings/ and writes listings/index.json (all listings, newest first).
 // `node scripts/index.js --check` only checks: it fails if a listing is bad or index.json is out of date.
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { cp, readdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { checkListing, byNewest } from '../bowl/lib/listings.js';
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'listings');
 const out = path.join(dir, 'index.json');
+const mediaOk = (l) => !l.media || existsSync(path.join(dir, '..', l.media));
 const checkOnly = process.argv.includes('--check');
 
 const files = (await readdir(dir)).filter((f) => f.endsWith('.json') && f !== 'index.json').sort();
@@ -22,6 +24,7 @@ for (const file of files) {
     continue;
   }
   const problems = checkListing(l, file);
+  if (!mediaOk(l)) problems.push(`media file not found: ${l.media}`);
   if (problems.length) {
     bad++;
     console.error(`✗ ${file}`);
@@ -49,5 +52,8 @@ if (checkOnly) {
   console.log(`✓ ${listings.length} listing(s) fine; index.json is up to date.`);
 } else {
   await writeFile(out, json);
+  // The preview page serves listing images from public/ (not committed); the site gets them its own way.
+  const media = path.join(dir, 'media');
+  if (existsSync(media)) await cp(media, path.join(dir, '..', 'public', 'listings', 'media'), { recursive: true });
   console.log(`✓ ${listings.length} listing(s) fine; wrote listings/index.json.`);
 }

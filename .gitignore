@@ -22,3 +22,6 @@ secrets/
 .DS_Store
 *.log
 npm-debug.log*
+
+# the preview copy of listing images (made by npm run index)
+public/listings/

@@ -1,0 +1,44 @@
+/* catfooding.com's variables, copied from the site so the preview looks the same. Inside the site they already exist. */
+:root {
+  --ink: #06070b;
+  --ink-lift: #0c0e15;
+  --bone: #edeae2;
+  --bone-dim: #9a9caa;
+  --bone-faint: #5c5f6d;
+  --accent: #6b5bff;
+  --accent-lift: #8d81ff;
+  --rule: rgba(237, 234, 226, 0.16);
+  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-thai: 'IBM Plex Sans Thai', 'Bricolage Grotesque', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-display);
+}
+
+.preview {
+  padding: clamp(18px, 3.4vw, 56px);
+}
+
+.preview__flag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+  border: 1px dashed var(--rule);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 0 auto 28px;
+  max-width: 1080px;
+}

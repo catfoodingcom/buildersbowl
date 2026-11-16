@@ -7,7 +7,7 @@ export default function Preview() {
   return (
     <main className="preview">
       <p className="preview__flag">Preview · on catfooding.com this replaces the Builder&apos;s Bowls page</p>
-      <BuildersBowl listings={listings} />
+      <BuildersBowl listings={listings} mediaBase="/" />
     </main>
   );
 }

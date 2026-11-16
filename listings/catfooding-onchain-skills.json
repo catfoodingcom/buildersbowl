@@ -12,7 +12,7 @@
     "try": "https://github.com/catfoodingcom/catfooding-onchain-skills/blob/main/START-HERE.md",
     "code": "https://github.com/catfoodingcom/catfooding-onchain-skills"
   },
-  "media": null,
+  "media": "listings/media/catfooding-onchain-skills.png",
   "needs": [
     "A coding agent that can run commands (Claude Code, Codex or similar); a chat-only assistant can explain the steps but can't do them",
     "Node.js 20 or newer",

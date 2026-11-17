@@ -4,7 +4,7 @@ Read this first. It's everything you need to start; ask in a pull request or iss
 
 ## What Builder's Bowl is
 
-Builder's Bowls are hands-on build sessions at Catfooding meetups. People bring a coding agent and build or demo things: apps, games, agents, skills. **Builder's Bowl is the marketplace where those builds are listed,** so people can find them, try them and see who made them.
+Builder's Bowls are hands-on build and demo sessions at Catfooding meetups. People bring a coding agent and build things, or demo something they built elsewhere: apps, games, agents, skills. **Builder's Bowl is the marketplace where those builds are listed,** so people can find them, try them and see who made them.
 
 It lives on **catfooding.com**, replacing today's Builder's Bowls page (a page, or an overlay on the site). This repo is where it's built. The Catfooding team brings it into the site by pull request.
 

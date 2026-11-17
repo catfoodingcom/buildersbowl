@@ -90,8 +90,7 @@ export default function BuildersBowl({ listings, bowls = [], mediaBase = '' }) {
         <p className="bowl-lede">
           Builder&apos;s Bowls are hands-on build and demo sessions at Catfooding meetups. Bring your coding agent and go
           catfooding: use what you build, and get real people to use it too. These are the skills, apps, games and
-          agents built or demoed at our sessions. Each Bowl&apos;s exercise is further down, and you can still do it on
-          your own.
+          agents built or demoed at our sessions.
         </p>
         <a className="bowl-add" href={ADD_URL} target="_blank" rel="noopener noreferrer">
           Add your build

@@ -2,7 +2,9 @@
 
 The marketplace for what people build and demo at Catfooding's Builder's Bowl sessions: apps, games, agents and skills, made by builders and their coding agents. It lives on [catfooding.com](https://catfooding.com/?page=builders); this repo is where it's built.
 
-**Status:** early. The Bowls (the exercise set at each meetup, still doable on your own) and the builds that came out of them.
+**Status:** early, with more listings to come.
+
+**What's here:** the builds from our sessions, and each session's exercise (a Bowl).
 
 ## Add your build
 

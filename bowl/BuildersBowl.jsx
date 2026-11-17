@@ -88,7 +88,7 @@ export default function BuildersBowl({ listings, bowls = [], mediaBase = '' }) {
         <p className="bowl-eyebrow">Builder&apos;s Bowl</p>
         <h1 className="bowl-title">Build with your agent. Show what you made.</h1>
         <p className="bowl-lede">
-          Builder&apos;s Bowls are hands-on build sessions at Catfooding meetups in Bangkok: you, your coding agent and an
+          Builder&apos;s Bowls are hands-on build sessions at Catfooding meetups: you, your coding agent and an
           afternoon. These are the skills, apps, games and agents that came out of them. Each Bowl&apos;s exercise is
           further down, and you can still do it on your own.
         </p>

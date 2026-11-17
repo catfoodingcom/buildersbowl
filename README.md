@@ -1,6 +1,6 @@
 # Builder's Bowl
 
-The marketplace for what people build at Catfooding's Builder's Bowls in Bangkok: apps, games, agents and skills, made by builders and their coding agents. It lives on [catfooding.com](https://catfooding.com/?page=builders); this repo is where it's built.
+The marketplace for what people build and demo at Catfooding's Builder's Bowl sessions: apps, games, agents and skills, made by builders and their coding agents. It lives on [catfooding.com](https://catfooding.com/?page=builders); this repo is where it's built.
 
 **Status:** early. The Bowls (the exercise set at each meetup, still doable on your own) and the builds that came out of them.
 
@@ -24,6 +24,6 @@ Read `CLAUDE.md` first (it's written for people and their agents). Work on a bra
 ## Links
 
 - Catfooding: https://catfooding.com
-- The Builder's Bowl #1 kit: https://github.com/catfoodingcom/catfooding-onchain-skills
+- The Builder's Bowl #1 kit: https://github.com/catfoodingcom/catfooding-onchain-skills (the exercise from Bowl #1, and the first listing here; you don't need it to add your build)
 
 MIT licence.

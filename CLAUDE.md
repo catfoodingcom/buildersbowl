@@ -34,7 +34,7 @@ One file per listing: `listings/<slug>.json`. The slug is lowercase with hyphens
   "slug": "catfooding-onchain-skills",
   "name": "Catfooding onchain skills",
   "kind": "skill",
-  "tagline": "Give your coding agent the skills to adopt an Agent Cat on Avalanche Fuji and hunt for fake stock tokens.",
+  "tagline": "Give your coding agent the skills to adopt a Catgent on Avalanche Fuji and hunt for fake stock tokens.",
   "builder": { "name": "Catfooding", "x": "Catfoodingcom", "github": "catfoodingcom" },
   "links": {
     "try": "https://github.com/catfoodingcom/catfooding-onchain-skills/blob/main/START-HERE.md",
@@ -111,7 +111,7 @@ Match catfooding.com: dark, quiet, one violet accent. These are the site's own C
 - The preview page defines these in `app/preview.css`, copied from the site. Inside the site they already exist.
 - **Status colours** (testnet label etc.): green `#3ddc97`, amber `#ffb84f`, red `#ff5d5d`. Use them for status only, never decoration.
 - **Cards:** lifted background, a thin `--rule` border, rounded corners, generous padding. Media at 1200×630.
-- **Words:** short and plain. "Agent Cats", never "NFTs". Say "testnet" wherever test money is involved.
+- **Words:** short and plain. "Catgents", never "NFTs". Say "testnet" wherever test money is involved.
 - Catfooding's designer may update the look. Keep every colour and font in variables, so a change is one place.
 
 ## Stack and conventions

@@ -3,7 +3,7 @@
     "slug": "catfooding-onchain-skills",
     "name": "Catfooding onchain skills",
     "kind": "skill",
-    "tagline": "Give your coding agent the skills to adopt an Agent Cat on Avalanche Fuji and hunt for fake stock tokens.",
+    "tagline": "Give your coding agent the skills to adopt a Catgent on Avalanche Fuji and hunt for fake stock tokens.",
     "builder": {
       "name": "Catfooding",
       "x": "Catfoodingcom",
